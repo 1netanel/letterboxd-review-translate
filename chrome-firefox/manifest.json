@@ -7,12 +7,10 @@
     {
       "run_at": "document_end",
       "matches": [
-        "https://letterboxd.com/*/film/*",
-        "https://letterboxd.com/film/*/reviews/by/*"
+        "https://letterboxd.com/film/*/",
+        "https://letterboxd.com/film/*/reviews/*"
       ],
-      "js": [
-        "start.js"
-      ]
+      "js": ["start.js"]
     }
   ]
 }
