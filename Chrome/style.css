@@ -1,0 +1,77 @@
+@media (prefers-color-scheme: dark) {
+  * {
+    --background-color: #292a2d;
+    --text-color: #e8eaed;
+    --secondery-color: #202124;
+    --blue-color: #8ab4f8;
+    --submit-text-color: #212121;
+    --border-color: #3c4043;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  * {
+    --background-color: #fff;
+    --text-color: #212121;
+    --secondery-color: #fff;
+    --blue-color: #1a73e8;
+    --submit-text-color: #fff;
+    --border-color: #dadce0;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Sans-serif;
+  user-select: none;
+  -webkit-user-drag: none;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+body,
+html {
+  width: 315px;
+  height: 140px;
+  font-size: large;
+  background: transparent;
+}
+
+.popup-contianer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+.popup-contianer select {
+  outline: none;
+  border: 2px solid var(--border-color);
+  background-color: var(--secondery-color);
+  font-size: medium;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: right;
+  gap: 0.4rem;
+}
+
+.buttons-container button {
+  border-radius: 5px;
+  font-weight: bold;
+  border: 2px solid var(--border-color);
+  width: 70px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.buttons-container button[type="submit"] {
+  color: var(--submit-text-color);
+  background-color: var(--blue-color);
+  border: 0;
+}

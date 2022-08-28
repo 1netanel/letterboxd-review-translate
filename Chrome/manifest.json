@@ -3,6 +3,10 @@
   "name": "Letterboxd Review Translate",
   "description": "Browser extension that lets you translate letterboxd review to your preferred language",
   "version": "0.1",
+  "action": {
+    "default_title": "Click Me",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "run_at": "document_end",
@@ -10,7 +14,7 @@
         "https://letterboxd.com/film/*/",
         "https://letterboxd.com/film/*/reviews/*"
       ],
-      "js": ["start.js"]
+      "js": ["content.js"]
     }
   ]
 }

@@ -1,7 +1,11 @@
 // TODO: fix the problem with long reviews collapse,
-// TODO: add dynamic target language
-const sourceLang = "auto";
-const targetLang = "en";
+
+const getTargetLang = () => {
+  // TODO: get target languges from lcoalsotrage
+  return "en";
+};
+
+const targetLang = getTargetLang();
 
 const detectLanguage = async (text) => {
   const obj = await chrome.i18n.detectLanguage(text);
@@ -9,7 +13,7 @@ const detectLanguage = async (text) => {
 };
 
 const fetchTranslation = async (textToTranslate) => {
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURI(
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURI(
     textToTranslate
   )}`;
   const res = await fetch(url);
