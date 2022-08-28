@@ -1,9 +1,9 @@
+// TODO: fix the problem with long reviews collapse,
+// TODO: add dynamic target language
 const sourceLang = "auto";
 const targetLang = "en";
 
 const detectLanguage = async (text) => {
-  // TODO: change from chrome to more generic option
-
   const obj = await chrome.i18n.detectLanguage(text);
   return obj.isReliable ? obj.languages[0].language : targetLang;
 };
@@ -20,11 +20,30 @@ const fetchTranslation = async (textToTranslate) => {
   return translatedText;
 };
 
+const createTranslateSpan = (translatedReview) => {
+  const span = document.createElement("span");
+  const childSpan = document.createElement("span");
+  const p = document.createElement("p");
+
+  p.innerText = translatedReview;
+  childSpan.innerText = translatedReview;
+  childSpan.style.color = "#40bcf4";
+  childSpan.style.fontStyle = "italic";
+  childSpan.style.display = "block";
+  childSpan.style.marginBottom = "5px";
+  childSpan.innerHTML = "Translated Review :";
+
+  span.classList.add("body-text");
+  span.appendChild(childSpan);
+  span.appendChild(p);
+  return span;
+};
+
 const appendTranslatedReview = async (reviewTextDiv) => {
   const reviewText = await reviewTextDiv.innerText;
   const translatedText = await fetchTranslation(reviewText);
-  // TODO: append translateion in a better way
-  reviewTextDiv.innerText += `\n\n${translatedText}\n`;
+  const span = createTranslateSpan(translatedText);
+  reviewTextDiv.after(span);
 };
 
 const createButton = () => {
@@ -32,8 +51,8 @@ const createButton = () => {
   a.appendChild(document.createTextNode("Transalte Review"));
   a.href = "javascript:void(0);";
   a.classList.add("js-reveal");
-  a.style.color = "#bcd";
-  a.style.fontFamily = "TiemposTextWeb-Regular, Georgia, serif";
+  a.style.color = "#40bcf4";
+  a.style.fontSize = "15px";
   return a;
 };
 
